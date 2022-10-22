@@ -19,11 +19,11 @@ jobs:
         env:
           RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
         with:
-          args: copy dropbox_g: dropbox_o:
+          args: 'copy dropbox_g: dropbox_o:'
 
       - name: rclone
         uses: wei/rclone@v1.1.1
         env:
           RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
         with:
-          args: copy dropbox_o: dropbox_g:
+          args: 'copy dropbox_o: dropbox_g:'
