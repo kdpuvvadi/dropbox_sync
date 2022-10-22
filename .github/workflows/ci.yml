@@ -1,0 +1,29 @@
+---
+name: dropbox sync
+
+on:
+  schedule:
+    - cron: 0 13 * * *
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: rclone
+        uses: wei/rclone@v1.1.1
+        env:
+          RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
+        with:
+          args: copy dropbox_g: dropbox_o:
+
+      - name: rclone
+        uses: wei/rclone@v1.1.1
+        env:
+          RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
+        with:
+          args: copy dropbox_o: dropbox_g:
