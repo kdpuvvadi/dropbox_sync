@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Git checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@latest
 
       - name: rclone
         uses: wei/rclone@v1.1.1
